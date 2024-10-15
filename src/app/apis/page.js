@@ -1,4 +1,3 @@
-// import axios from 'axios';
 import { StyledGrids } from '../styled/Grids.styled';
 
 export default async function Page() {
@@ -12,9 +11,15 @@ export default async function Page() {
 
   const data = await getData();
 
-  console.log('manny results: ', data?.results);
+  console.log('results: ', data?.results);
 
-  return <h1>grids</h1>;
+  return (
+    <StyledGrids>
+      {data?.results.map((song) => {
+        return <p>{song?.trackName}</p>;
+      })}
+    </StyledGrids>
+  );
 }
 
 // export default Page;
